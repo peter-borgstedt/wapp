@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { info, error } from '@tauri-apps/plugin-log';
   import Icon from './Icon.svelte';
   import { page } from '$app/stores';
   import { appStore } from '$lib/stores/app.svelte';
@@ -11,11 +10,10 @@
   });
 
   const track = () => {
-    info('hej');
     navigator.geolocation.getCurrentPosition((position) => {
-      info("success: " + JSON.stringify(position, null, 2));
-    }, (e) => {
-      error("error: " + JSON.stringify(e, null, 2));
+      console.log("success", position);
+    }, (error) => {
+      console.log('failure', error);
     });
   }
 </script>
